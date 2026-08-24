@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7fb">
+  <meta name="description" content="Read-only VLP home shop coverage analysis for the unclaimed-shop filtering decision.">
+  <title>VLP Home Pins · Decision Brief</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #61708a;
+      --line: #dce4ef;
+      --paper: #ffffff;
+      --wash: #f4f7fb;
+      --blue: #1d5fd1;
+      --blue-soft: #eaf2ff;
+      --green: #147a58;
+      --green-soft: #e8f7f0;
+      --amber: #a85b00;
+      --amber-soft: #fff4df;
+      --red: #b33a42;
+      --red-soft: #fff0f1;
+      --shadow: 0 12px 34px rgba(29, 56, 93, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--wash);
+      font: 16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: var(--blue); }
+    .shell { max-width: 1060px; margin: auto; padding: 28px 18px 72px; }
+    .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: center; margin-bottom: 42px; }
+    .eyebrow { color: var(--blue); font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .updated { color: var(--muted); font-size: 13px; text-align: right; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 760px; margin-bottom: 14px; font-size: clamp(2.15rem, 5vw, 4.25rem); line-height: 1.02; letter-spacing: -.055em; }
+    h2 { margin-bottom: 10px; font-size: clamp(1.45rem, 3vw, 2.1rem); line-height: 1.1; letter-spacing: -.025em; }
+    h3 { margin-bottom: 7px; font-size: 1.05rem; line-height: 1.2; }
+    .lede { max-width: 730px; color: var(--muted); font-size: 1.12rem; }
+    .hero { display: grid; grid-template-columns: 1.3fr .7fr; gap: 18px; align-items: stretch; margin-bottom: 24px; }
+    .hero-card, .card { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); }
+    .hero-card { padding: 25px; }
+    .decision { display: flex; flex-direction: column; justify-content: space-between; padding: 25px; background: #14274a; color: #fff; border-radius: 20px; box-shadow: var(--shadow); }
+    .decision .eyebrow { color: #a9cbff; }
+    .decision strong { display: block; margin: 12px 0 8px; font-size: 1.75rem; line-height: 1.08; }
+    .decision p { color: #dce8fb; margin-bottom: 0; }
+    .pill { display: inline-flex; width: fit-content; align-items: center; gap: 7px; padding: 7px 11px; border-radius: 999px; font-size: 13px; font-weight: 800; }
+    .pill.green { color: var(--green); background: var(--green-soft); }
+    .pill.amber { color: var(--amber); background: var(--amber-soft); }
+    .pill.red { color: var(--red); background: var(--red-soft); }
+    .jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 34px; }
+    .jump a { padding: 8px 12px; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 999px; font-size: 13px; text-decoration: none; }
+    .jump a:hover { border-color: var(--blue); color: var(--blue); }
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 18px 0 34px; }
+    .metric { min-height: 138px; padding: 18px; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; }
+    .metric .number { display: block; margin: 8px 0 5px; font-size: 2rem; font-weight: 850; line-height: 1; letter-spacing: -.045em; }
+    .metric .label { color: var(--muted); font-size: 13px; line-height: 1.35; }
+    section { margin: 52px 0; }
+    .section-intro { max-width: 760px; color: var(--muted); margin-bottom: 20px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .card { padding: 22px; box-shadow: none; }
+    .option { position: relative; overflow: hidden; }
+    .option.recommended { border: 2px solid #6db998; }
+    .option.recommended::after { content: "RECOMMENDED FIRST"; position: absolute; top: 15px; right: -33px; padding: 5px 38px; color: #fff; background: var(--green); font-size: 10px; font-weight: 850; letter-spacing: .08em; transform: rotate(35deg); }
+    .option h3 { padding-right: 100px; }
+    .option ul { margin: 14px 0 0; padding-left: 20px; }
+    .option li { margin: 6px 0; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); }
+    table { width: 100%; min-width: 650px; border-collapse: collapse; }
+    th, td { padding: 13px 15px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    tr:last-child td { border-bottom: 0; }
+    th { color: var(--muted); background: #f8fafd; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
+    td strong { white-space: nowrap; }
+    .good-text { color: var(--green); font-weight: 800; }
+    .warn-text { color: var(--amber); font-weight: 800; }
+    .bad-text { color: var(--red); font-weight: 800; }
+    .note { padding: 17px 19px; border-left: 4px solid var(--blue); color: #30415d; background: var(--blue-soft); border-radius: 12px; }
+    .note.amber { border-left-color: var(--amber); background: var(--amber-soft); }
+    .note.green { border-left-color: var(--green); background: var(--green-soft); }
+    .bar-list { display: grid; gap: 15px; margin-top: 20px; }
+    .bar-row { display: grid; grid-template-columns: 115px 1fr 82px; gap: 10px; align-items: center; font-size: 14px; }
+    .bar-track { height: 12px; overflow: hidden; background: #e8edf4; border-radius: 99px; }
+    .bar { height: 100%; border-radius: inherit; background: var(--blue); }
+    .bar.unclaimed { background: #e38b34; }
+    .bar.sku { background: #6b91d9; }
+    .bar-value { color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+    .coverage { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; }
+    .coverage .card { height: 100%; }
+    .big-stat { margin: 4px 0 12px; font-size: 3.1rem; font-weight: 850; line-height: 1; letter-spacing: -.06em; }
+    .small { color: var(--muted); font-size: 13px; }
+    details { border-top: 1px solid var(--line); padding: 14px 0; }
+    details:first-of-type { border-top: 0; }
+    summary { cursor: pointer; font-weight: 800; }
+    details p { margin: 10px 0 0; color: var(--muted); }
+    .steps { counter-reset: step; display: grid; gap: 12px; margin-top: 20px; }
+    .step { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; }
+    .step::before { counter-increment: step; content: counter(step); display: grid; width: 30px; height: 30px; place-items: center; color: #fff; background: var(--blue); border-radius: 50%; font-weight: 850; }
+    .step strong { display: block; margin-bottom: 3px; }
+    footer { padding-top: 28px; color: var(--muted); border-top: 1px solid var(--line); font-size: 13px; }
+    @media (max-width: 780px) {
+      .hero, .coverage { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .topbar { align-items: flex-start; }
+      .updated { max-width: 150px; }
+    }
+    @media (max-width: 480px) {
+      .shell { padding: 20px 13px 50px; }
+      .metrics { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .metric { min-height: 124px; padding: 14px; }
+      .metric .number { font-size: 1.55rem; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .hero-card, .decision, .card { padding: 18px; border-radius: 16px; }
+      .bar-row { grid-template-columns: 92px 1fr 74px; gap: 7px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="topbar">
+      <div class="eyebrow">VLP home · decision brief</div>
+      <div class="updated">Read-only production analysis<br>24 August 2026 · UTC</div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-card">
+        <h1>Should home pins include unclaimed shops?</h1>
+        <p class="lede">The practical question is not “can we remove them?” It is whether the coverage loss is small enough, and the map becomes clear enough, to justify removing them.</p>
+        <div class="jump" aria-label="Page sections">
+          <a href="#answer">Short answer</a>
+          <a href="#coverage">City coverage</a>
+          <a href="#map">Map effect</a>
+          <a href="#engagement">Engagement</a>
+          <a href="#next">Next experiment</a>
+        </div>
+      </div>
+      <aside class="decision" id="answer">
+        <div>
+          <div class="eyebrow">Decision signal</div>
+          <strong>Start with claimed-only.</strong>
+          <p>Keep registered internet shops, including SKU-less registered shops. Remove only unclaimed shops in the first test.</p>
+        </div>
+        <span class="pill green">Lower coverage risk</span>
+      </aside>
+    </div>
+
+    <div class="metrics" aria-label="Headline metrics">
+      <div class="metric"><span class="eyebrow">Claimed-only</span><span class="number">12.0%</span><span class="label">of observed cities are empty in the city-center replay</span></div>
+      <div class="metric"><span class="eyebrow">Strict internet</span><span class="number">19.3%</span><span class="label">of observed cities are empty if SKU-less shops are also removed</span></div>
+      <div class="metric"><span class="eyebrow">Home map</span><span class="number">−43%</span><span class="label">average visible markers in a 500-request live replay</span></div>
+      <div class="metric"><span class="eyebrow">Unclaimed value</span><span class="number">28.5k</span><span class="label">home shop-profile clicks in the same seven-day window</span></div>
+    </div>
+
+    <section>
+      <h2>There are two different policies</h2>
+      <p class="section-intro">The word “internet shop” is ambiguous in the current VLP model. The choice changes the empty-city risk materially.</p>
+      <div class="grid-2">
+        <article class="card option recommended">
+          <span class="pill green">Candidate A</span>
+          <h3>Claimed-only</h3>
+          <p><strong>Keep:</strong> <code>internet_shop</code> + <code>sku_less_internet_shop</code></p>
+          <p><strong>Remove:</strong> <code>unclaimed_shop</code></p>
+          <ul>
+            <li>149/1,244 cities empty (12.0%).</li>
+            <li>3,059/463,899 requests empty (0.66%).</li>
+            <li>No empty cities among the 129 cities with at least 500 requests.</li>
+          </ul>
+        </article>
+        <article class="card option">
+          <span class="pill red">Candidate B</span>
+          <h3>Strict internet-only</h3>
+          <p><strong>Keep:</strong> <code>internet_shop</code></p>
+          <p><strong>Remove:</strong> unclaimed and SKU-less registered shops</p>
+          <ul>
+            <li>240/1,244 cities empty (19.3%).</li>
+            <li>7,146/463,899 requests empty (1.54%).</li>
+            <li>One ≥500-request city becomes empty; none ≥1,000.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="coverage">
+      <h2>City coverage is mostly a long tail problem</h2>
+      <p class="section-intro">The denominator includes every city observed in the seven-day window, including many cities with only a handful of requests. Traffic-weighted risk is much smaller than the raw city percentage.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Minimum requests in city</th><th>Observed cities</th><th>Claimed-only empty</th><th>Strict empty</th><th>Empty request share</th></tr></thead>
+          <tbody>
+            <tr><td>Any traffic</td><td>1,244</td><td class="good-text">149 · 12.0%</td><td class="bad-text">240 · 19.3%</td><td>0.66% / 1.54%</td></tr>
+            <tr><td>≥ 10</td><td>820</td><td class="good-text">51 · 6.2%</td><td class="bad-text">95 · 11.6%</td><td>0.59% / 1.43%</td></tr>
+            <tr><td>≥ 100</td><td>371</td><td class="good-text">8 · 2.2%</td><td class="bad-text">18 · 4.9%</td><td>0.29% / 0.85%</td></tr>
+            <tr><td>≥ 500</td><td>129</td><td class="good-text">0 · 0.0%</td><td class="warn-text">1 · 0.8%</td><td>0.00% / 0.22%</td></tr>
+            <tr><td>≥ 1,000</td><td>60</td><td class="good-text">0 · 0.0%</td><td class="good-text">0 · 0.0%</td><td>0.00% / 0.00%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small" style="margin-top:10px">The city percentages come from one canonical city-center replay per observed city. Request shares use the city’s actual seven-day home-request volume.</p>
+    </section>
+
+    <section id="map">
+      <h2>The map gets materially lighter</h2>
+      <p class="section-intro">For clustering, 500 successful home-map requests were replayed with their real viewport bounds. Removing shops changes both the number of shops represented and how geotile clusters split.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Map metric</th><th>Current mixed</th><th>Claimed-only</th><th>Strict</th></tr></thead>
+          <tbody>
+            <tr><td>Average shops represented in viewport</td><td>93.7</td><td class="good-text">40.4</td><td class="good-text">32.6</td></tr>
+            <tr><td>Average returned markers</td><td>80.9</td><td class="good-text">46.3 · −42.7%</td><td class="good-text">38.5 · −52.4%</td></tr>
+            <tr><td>New empty responses among currently non-empty requests</td><td>—</td><td class="warn-text">14 / 303 · 4.6%</td><td class="bad-text">22 / 303 · 7.3%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note amber" style="margin-top:16px"><strong>Important map caveat:</strong> marker count is not perfectly monotonic. Removing dense shops can split one cluster into several smaller markers. The underlying viewport shop count is the safer primary metric; visible marker count should be a secondary UX metric.</div>
+    </section>
+
+    <section id="engagement">
+      <h2>Unclaimed shops are noisy, but not unused</h2>
+      <p class="section-intro">The same seven-day home window contained substantial interaction with unclaimed shops. Removing them could improve relevance while also removing a real local-discovery path.</p>
+      <div class="card">
+        <div class="bar-list" aria-label="Home shop profile clicks by shop type">
+          <div class="bar-row"><span>Unclaimed</span><div class="bar-track"><div class="bar unclaimed" style="width:100%"></div></div><span class="bar-value">28,463</span></div>
+          <div class="bar-row"><span>Internet</span><div class="bar-track"><div class="bar" style="width:28.4%"></div></div><span class="bar-value">8,093</span></div>
+          <div class="bar-row"><span>SKU-less</span><div class="bar-track"><div class="bar sku" style="width:7.9%"></div></div><span class="bar-value">2,253</span></div>
+        </div>
+        <p class="small" style="margin:18px 0 0">Unclaimed shops generated about 73% of home shop-profile clicks. Final/CTA clicks were 2,482 unclaimed, 416 internet, and 152 SKU-less.</p>
+      </div>
+      <div class="note" style="margin-top:16px"><strong>Interpretation:</strong> the case for filtering is pin overload, not “unclaimed shops have no value.” A holdout is needed to see whether claimed shops absorb that demand.</div>
+    </section>
+
+    <section>
+      <h2>Questions answered before implementation</h2>
+      <div class="card">
+        <details open>
+          <summary>Does the filter need to run in the query or only in serialization?</summary>
+          <p>In the query. Post-filtering old search responses makes page 1 empty in roughly 22% of requests for claimed-only and 62% for strict filtering. For maps, post-filtering leaves mixed clusters counting shops that are no longer allowed.</p>
+        </details>
+        <details>
+          <summary>Will the search page become much shorter?</summary>
+          <p>No. Query-level filtering refills the page with retained shops. In the city-center size-54 replay, weighted result count fell about 4.2% for claimed-only and 6.3% for strict filtering. The map is where the larger reduction appears.</p>
+        </details>
+        <details>
+          <summary>Are major cities at risk?</summary>
+          <p>Not with claimed-only in this sample: no city with at least 500 home requests became empty. Strict filtering produced one empty ≥500-request city and no empty ≥1,000-request city.</p>
+        </details>
+        <details>
+          <summary>What is still uncertain?</summary>
+          <p>Map responses are viewport-specific and are not stored as city-level result logs. The clustering numbers are a live request replay, not a census of every city. Clicks also measure current behavior, not what retained shops would receive after a rollout.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="next">
+      <h2>Smallest safe next step</h2>
+      <div class="card">
+        <div class="steps">
+          <div class="step"><div><strong>Run claimed-only as the first holdout.</strong><span class="small">Keep both registered shop types; remove only unclaimed shops from home search and home clustering.</span></div></div>
+          <div class="step"><div><strong>Measure the trade-off.</strong><span class="small">Track viewport shop count, visible markers, empty responses, shop-profile clicks, CTA clicks, and page-1 empties.</span></div></div>
+          <div class="step"><div><strong>Use strict filtering only if the holdout still shows overload.</strong><span class="small">Strict filtering has nearly twice the empty-city rate of claimed-only and removes SKU-less engagement too.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <strong>Method.</strong> Read-only ClickHouse VLP search and click logs for the latest seven days, plus live replay of the public VLP search endpoint for 1,244 observed city IDs and 500 home-map requests from access logs. Bots were excluded where the log field was available. Numbers are rounded for readability; the endpoint replay uses canonical city-center coordinates and a search size of 54.
+    </footer>
+  </main>
+</body>
+</html>
